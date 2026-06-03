@@ -65,6 +65,9 @@ THE_VOID_IP_HASH_SECRET=
 
 The included `render.yaml` is a generic Render blueprint. It defines the build/start commands and marks sensitive values as manually supplied environment variables.
 
+## Live link: https://the-void-zv1k.onrender.com
+
+
 ## License
 
 MIT. Use this code as a reference for your own app.
