@@ -37,24 +37,6 @@ This public repository is intentionally minimal. It contains the source needed t
 - Sharp image validation/re-encoding
 - Render-ready deployment config
 
-## Repository structure
-
-```text
-.
-├── public/
-│   ├── index.html
-│   ├── admin.html
-│   ├── script.js
-│   ├── admin.js
-│   └── styles.css
-├── supabase/
-│   └── schema.sql
-├── .env.example
-├── .gitignore
-├── package.json
-├── render.yaml
-└── server.js
-```
 
 ## Local setup
 
