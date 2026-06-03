@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>THE VOID</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside id="voidAccountMenu" class="void-account-menu" aria-label="Account options">
+    <button id="voidMenuToggle" class="void-menu-toggle" type="button" aria-expanded="false" aria-controls="voidMenuPanel" aria-label="Open menu">
+      <svg class="void-gear-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path>
+        <path d="M19.43 12.98c.04-.32.07-.65.07-.98s-.02-.66-.07-.98l2.02-1.57-1.9-3.29-2.38.96a7.7 7.7 0 0 0-1.7-.98L15.1 3.6h-3.8l-.36 2.54c-.6.24-1.17.56-1.7.98l-2.38-.96-1.9 3.29 2.02 1.57c-.04.32-.07.65-.07.98s.02.66.07.98l-2.02 1.57 1.9 3.29 2.38-.96c.53.41 1.1.74 1.7.98l.36 2.54h3.8l.36-2.54c.6-.24 1.17-.57 1.7-.98l2.38.96 1.9-3.29-2.02-1.57Z"></path>
+      </svg>
+    </button>
+    <section id="voidMenuPanel" class="void-menu-panel hidden">
+      <div class="void-menu-head">
+        <strong>THE VOID</strong>
+        <small id="menuUserLabel">Guest</small>
+      </div>
+      <button id="menuProfileBtn" class="void-menu-item" type="button">Profile</button>
+      <button id="menuSearchBtn" class="void-menu-item" type="button">Search</button>
+      <label id="menuSearchBox" class="void-menu-search hidden">
+        <span>Search wallpapers or users</span>
+        <input id="wallpaperSearch" type="search" placeholder="Wallpaper name or @username" autocomplete="off" />
+        <div id="userSearchResults" class="user-search-results hidden"></div>
+      </label>
+      <button id="menuLoginBtn" class="void-menu-item" type="button">Signup / Login</button>
+      <button id="menuLogoutBtn" class="void-menu-item hidden" type="button">Logout</button>
+    </section>
+  </aside>
+
+  <div class="app-shell">
+    <header class="app-hero" aria-label="THE VOID hero">
+      <div class="hero-stage" aria-hidden="true">
+        <span class="hero-ring"></span>
+        <span class="hero-core"></span>
+        <span class="hero-glow"></span>
+        <span class="hollow-wave wave-one"></span>
+        <span class="hollow-wave wave-two"></span>
+        <span class="hollow-orbit orbit-one"></span>
+        <span class="hollow-orbit orbit-two"></span>
+        <span class="hollow-slice slice-left"></span>
+        <span class="hollow-slice slice-right"></span>
+        <span class="hero-arc arc-a"></span>
+        <span class="hero-arc arc-b"></span>
+        <span class="hero-mist mist-left"></span>
+        <span class="hero-mist mist-right"></span>
+        <span class="hero-star s1"></span>
+        <span class="hero-star s2"></span>
+        <span class="hero-star s3"></span>
+        <span class="hero-star s4"></span>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title" aria-label="THE VOID">THE VOID</h1>
+        <p class="hero-subtitle">WALLPAPERS BEYOND LIGHT</p>
+      </div>
+    </header>
+
+    <main>
+      <section id="about" class="section always-visible">
+        <article class="about-panel">
+          <div class="section-title-row">
+            <div>
+              <p class="eyebrow">About</p>
+              <h2>THE VOID Wallpapers</h2>
+            </div>
+          </div>
+          <p class="about-text">
+            A curated space for dark, immersive wallpapers, where creators share their vision and the void remembers.
+          </p>
+        </article>
+      </section>
+
+
+      <section id="wallpapers" class="section always-visible">
+        <div class="section-title-row wallpaper-head">
+          <div>
+            <h2>Wallpapers</h2>
+          </div>
+          <button id="refreshWallpapers" class="ghost-btn" type="button">Refresh</button>
+        </div>
+        <div id="wallpapersGrid" class="wallpaper-grid"></div>
+        <p id="wallpapersEmpty" class="empty-text hidden">No wallpapers yet. New uploads appear here after review.</p>
+      </section>
+
+      <section id="upload" class="section always-visible upload-last">
+        <form id="uploadForm" class="panel upload-panel">
+          <div class="section-title-row">
+            <div>
+              <p class="eyebrow">Upload</p>
+              <h2>Add a wallpaper</h2>
+            </div>
+          </div>
+
+          <label id="dropzone" class="dropzone">
+            <input id="wallpaperFile" type="file" accept="image/*" />
+            <span class="drop-plus">+</span>
+            <strong>Choose your wallpaper</strong>
+            <small>PNG, JPG, or WEBP - 9:16 primary - 1080x1920 / 1440x2560 recommended - max 12 MB</small>
+          </label>
+
+          <label class="field-label">
+            Creator name
+            <input id="creatorName" type="text" maxlength="60" placeholder="e.g. Shareq" />
+          </label>
+
+          <label class="field-label">
+            Wallpaper name
+            <input id="wallpaperTitle" type="text" maxlength="80" placeholder="e.g. Black Moon" />
+          </label>
+
+          <div id="selectedInfo" class="selected-info hidden"></div>
+
+          <div id="presetArea" class="preset-area hidden">
+            <div class="section-title-row">
+              <div>
+                <p class="eyebrow">Layout presets</p>
+                <h2>Tap a preset to preview your wallpaper</h2>
+              </div>
+            </div>
+            <div id="presetGrid" class="preset-grid"></div>
+          </div>
+
+          <div id="previewStage" class="preview-stage hidden" aria-live="polite">
+            <div class="preview-stage-head">
+              <div>
+                <p class="eyebrow">Preview</p>
+                <h2 id="labTitle">Lock screen</h2>
+                <p class="preview-ratio">Base ratio: 9:16</p>
+              </div>
+            </div>
+            <div class="phone-preview-wrap">
+              <div id="phoneFrame" class="phone-frame">
+                <canvas id="wallpaperCanvas" width="1080" height="1920"></canvas>
+              </div>
+            </div>
+            <div class="preview-tools">
+              <label class="slider-field">
+                <span>Crop / Zoom</span>
+                <small id="zoomValue">100%</small>
+                <span class="zoom-slider-wrap">
+                  <input id="zoomRange" type="range" min="0.05" max="2.2" step="0.01" value="1" />
+                  <i id="zoomOriginalMarker" class="zoom-original-marker" aria-hidden="true"></i>
+                </span>
+                <small id="zoomOutWarning" class="zoom-out-warning" hidden>Warning: zoomed out past the original fit. Empty space may appear around the wallpaper.</small>
+              </label>
+              <label class="slider-field">
+                <span>Horizontal</span>
+                <small id="offsetXValue">0</small>
+                <input id="offsetXRange" type="range" min="-100" max="100" step="1" value="0" />
+              </label>
+              <label class="slider-field">
+                <span>Vertical</span>
+                <small id="offsetYValue">0</small>
+                <input id="offsetYRange" type="range" min="-100" max="100" step="1" value="0" />
+              </label>
+              <div class="preview-options-row">
+                <label class="toggle-field switch-field" for="gridToggle">
+                  <input id="gridToggle" type="checkbox" checked />
+                  <span class="switch-ui" aria-hidden="true"></span>
+                  <span>Show Grid</span>
+                </label>
+                <button id="resetPreviewAdjustments" class="reset-pill" type="button" aria-label="Reset preview adjustments">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.34-5.66"></path><path d="M4 4v6h6"></path></svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+            <p class="hint-text">This is only a layout preview. The uploaded image stays hidden until approved by Admin.</p>
+          </div>
+
+          <button id="submitBtn" class="primary-btn approval-btn" type="submit" disabled>Submit for approval</button>
+          <p id="uploadStatus" class="status-text"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="app-footer" aria-label="Contact information">
+      <article class="footer-panel">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Get in touch</h2>
+          </div>
+        </div>
+        <p class="footer-contact-item"><strong>Email:</strong> <a href="mailto:22q91a05i3@gmail.com">22q91a05i3@gmail.com</a></p>
+        <p class="footer-contact-item footer-linkedin"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/syed-roshan-shareq-4408a7336/" target="_blank" rel="noopener noreferrer">linkedin.com/in/syed-roshan-shareq-4408a7336</a></p>
+        <p class="footer-legal">@2026 | THE VOID</p>
+      </article>
+    </footer>
+  </div>
+
+  <div id="wallpaperPreviewModal" class="wallpaper-preview-modal hidden" aria-hidden="true">
+    <div class="wallpaper-preview-backdrop" data-close-preview></div>
+    <section class="wallpaper-preview-panel" role="dialog" aria-modal="true" aria-labelledby="wallpaperPreviewTitle">
+      <div class="wallpaper-preview-head">
+        <div>
+          <p class="eyebrow">Preview</p>
+          <h2 id="wallpaperPreviewTitle">Wallpaper preview</h2>
+          <p id="wallpaperPreviewCreator" class="preview-creator">by The Void</p>
+        </div>
+        <button id="closeWallpaperPreview" class="preview-close-btn" type="button" aria-label="Close preview">×</button>
+      </div>
+      <div class="approved-preview-grid">
+        <article class="approved-preview-item">
+          <h3>Lock screen</h3>
+          <div class="approved-phone-frame"><canvas id="approvedLockCanvas" width="1080" height="1920"></canvas></div>
+        </article>
+        <article class="approved-preview-item">
+          <h3>Home screen</h3>
+          <div class="approved-phone-frame"><canvas id="approvedHomeCanvas" width="1080" height="1920"></canvas></div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
