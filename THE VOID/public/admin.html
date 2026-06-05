@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>THE VOID admin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell admin-shell">
+      <header class="app-hero" aria-label="THE VOID hero">
+        <div class="hero-stage" aria-hidden="true">
+          <span class="hero-ring"></span>
+          <span class="hero-core"></span>
+          <span class="hero-glow"></span>
+          <span class="hollow-wave wave-one"></span>
+          <span class="hollow-wave wave-two"></span>
+          <span class="hollow-orbit orbit-one"></span>
+          <span class="hollow-orbit orbit-two"></span>
+          <span class="hollow-slice slice-left"></span>
+          <span class="hollow-slice slice-right"></span>
+          <span class="hero-arc arc-a"></span>
+          <span class="hero-arc arc-b"></span>
+          <span class="hero-mist mist-left"></span>
+          <span class="hero-mist mist-right"></span>
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title" aria-label="THE VOID">THE VOID</h1>
+          <p class="hero-subtitle">WALLPAPERS BEYOND LIGHT</p>
+        </div>
+      </header>
+
+      <main>
+        <section id="loginPanel" class="admin-card">
+          <div>
+            <p class="eyebrow">Private admin</p>
+            <h2>Approval login.</h2>
+          </div>
+          <p class="admin-note">
+            The approval queue is server-protected and does not appear in the
+            public app.
+          </p>
+          <label class="field-label">
+            Admin password
+            <input
+              id="adminPassword"
+              type="password"
+              autocomplete="current-password"
+              placeholder="Enter server-side password"
+            />
+          </label>
+          <button id="loginBtn" class="primary-btn">Login</button>
+          <p id="loginStatus" class="status-text"></p>
+        </section>
+
+        <div id="queuePanel" class="hidden admin-dashboard">
+          <section
+            id="adminHome"
+            class="admin-card admin-home-card"
+            aria-labelledby="adminHomeTitle"
+          >
+            <div class="section-title-row wallpaper-head">
+              <div>
+                <p class="eyebrow">Private admin</p>
+                <h2 id="adminHomeTitle">Admin dashboard.</h2>
+              </div>
+              <button id="logoutBtn" class="ghost-btn" type="button">
+                Logout
+              </button>
+            </div>
+            <div class="admin-home-grid" aria-label="Admin sections">
+              <button
+                class="admin-nav-card"
+                type="button"
+                data-admin-section="approval"
+                aria-label="Open approval queue"
+              >
+                <span class="admin-nav-kicker">01</span>
+                <span class="admin-nav-title">Approval queue</span>
+                <span class="admin-nav-copy"
+                  >Review pending wallpapers before they go live.</span
+                >
+                <span class="admin-nav-arrow" aria-hidden="true">Enter</span>
+              </button>
+              <button
+                class="admin-nav-card"
+                type="button"
+                data-admin-section="existing"
+                aria-label="Open existing wallpapers"
+              >
+                <span class="admin-nav-kicker">02</span>
+                <span class="admin-nav-title">Existing wallpapers</span>
+                <span class="admin-nav-copy"
+                  >Edit, download, or delete approved wallpapers.</span
+                >
+                <span class="admin-nav-arrow" aria-hidden="true">Enter</span>
+              </button>
+              <button
+                class="admin-nav-card"
+                type="button"
+                data-admin-section="users"
+                aria-label="Open user IDs"
+              >
+                <span class="admin-nav-kicker">03</span>
+                <span class="admin-nav-title">@User IDs</span>
+                <span class="admin-nav-copy"
+                  >Search and manage creator profiles.</span
+                >
+                <span class="admin-nav-arrow" aria-hidden="true">Enter</span>
+              </button>
+            </div>
+          </section>
+
+          <section
+            id="approvalSection"
+            class="admin-card admin-section-card admin-detail-section hidden"
+            aria-labelledby="approvalQueueTitle"
+          >
+            <div class="section-title-row wallpaper-head">
+              <div>
+                <p class="eyebrow">Hidden from users</p>
+                <h2 id="approvalQueueTitle">Approval queue.</h2>
+              </div>
+              <button
+                class="ghost-btn admin-back-btn"
+                type="button"
+                data-back-home
+              >
+                Back
+              </button>
+            </div>
+            <div id="queueGrid" class="queue-grid"></div>
+            <p id="queueEmpty" class="empty-text hidden">
+              No pending wallpapers right now.
+            </p>
+          </section>
+
+          <section
+            id="existingWallpapersSection"
+            class="admin-card admin-section-card admin-detail-section hidden"
+            aria-labelledby="existingWallpapersTitle"
+          >
+            <div class="section-title-row wallpaper-head existing-head">
+              <div>
+                <p class="eyebrow">Manage live wallpapers</p>
+                <h2 id="existingWallpapersTitle">Existing wallpapers.</h2>
+              </div>
+              <div class="admin-section-actions">
+                <button
+                  class="ghost-btn admin-back-btn"
+                  type="button"
+                  data-back-home
+                >
+                  Back
+                </button>
+                <button id="refreshExisting" class="ghost-btn" type="button">
+                  Refresh
+                </button>
+              </div>
+            </div>
+            <div id="existingGrid" class="queue-grid"></div>
+            <p id="existingEmpty" class="empty-text hidden">
+              No approved wallpapers yet.
+            </p>
+          </section>
+
+          <section
+            id="userIdsSection"
+            class="admin-card admin-section-card admin-detail-section hidden"
+            aria-labelledby="userIdsTitle"
+          >
+            <div class="section-title-row wallpaper-head existing-head">
+              <div>
+                <p class="eyebrow">Manage creator IDs</p>
+                <h2 id="userIdsTitle">@User IDs.</h2>
+              </div>
+              <div class="admin-section-actions">
+                <button
+                  class="ghost-btn admin-back-btn"
+                  type="button"
+                  data-back-home
+                >
+                  Back
+                </button>
+                <button id="refreshUsers" class="ghost-btn" type="button">
+                  Refresh
+                </button>
+              </div>
+            </div>
+            <div class="admin-user-toolbar">
+              <label class="field-label admin-user-search-label">
+                Search username
+                <input
+                  id="userSearch"
+                  class="admin-edit-input"
+                  type="text"
+                  maxlength="24"
+                  placeholder="e.g. creator"
+                  autocomplete="off"
+                />
+              </label>
+              <button id="searchUsersBtn" class="primary-btn" type="button">
+                Search
+              </button>
+              <button id="cleanupLocksBtn" class="ghost-btn" type="button">
+                Clean stale locks
+              </button>
+            </div>
+            <p class="admin-note">
+              Complete delete removes the user row, their wallpapers, profile
+              picture, active login lock, and that profile's IP/browser signup
+              lock. You can also remove the 24-hour upload limit for specific
+              users. Other active users keep their IP/device locks.
+            </p>
+            <div id="userGrid" class="queue-grid admin-user-grid"></div>
+            <p id="userEmpty" class="empty-text hidden">
+              No creator profiles found.
+            </p>
+            <p id="userStatus" class="status-text"></p>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="admin.js"></script>
+  </body>
+</html>

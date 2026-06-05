@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: the-void
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_BUCKET
+        value: wallpapers
+      - key: THE_VOID_ADMIN_PASSWORD
+        sync: false
